@@ -1,7 +1,6 @@
-.pr1 {
-    color: red;
-}
-
-#name {
-    color: blue;    color: blue;
+section {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: rgb(179, 201, 189);
+    border-radius: 8px;
 }
