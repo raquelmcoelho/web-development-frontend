@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SuperMarket</title>
+    <link rel="icon" type="image/ico" href="assets/supermarket.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
+    <script src="script.js" type="text/JavaScript"></script>
+</head>
+
+<body>
+
+
+    <div>
+        <h1>supermarket</h1>
+        <br>
+        <table>
+            <tr>
+                <td> <a href="#" onclick="choose('apple')">
+                        <img src="assets/apple.jpg" alt="apple">
+                    </a>
+                </td>
+                <td> <a href="#" onclick="choose('carrot')">
+                        <img src="assets/carrot.jpg" alt="carrot">
+                    </a>
+                </td>
+                <td> <a href="#" onclick="choose('strawberry')">
+                        <img src="assets/strawberry.jpg" alt="strawberry">
+                    </a>
+                </td>
+                <td> <a href="#" onclick="choose('blueberry')">
+                        <img src="assets/blueberry.jpg" alt="blueberry">
+                    </a>
+                </td>
+                <td> <a href="#" onclick="choose('pineapple')">
+                        <img src="assets/pineapple.jpg" alt="pineapple">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td id="appleprice"> 1 € </td>
+                <td id="carrotprice"> 5 € </td>
+                <td id="strawberryprice"> 3 € </td>
+                <td id="blueberryprice"> 1.5 € </td>
+                <td id="pineappleprice"> 2 € </td>
+            </tr>
+        </table>
+        <br>
+        <table>
+            <tr>
+                <td>total:</td>
+                <td>
+                    <p id="total"> </p>
+
+                </td>
+                <td>items:</td>
+                <td>
+                    <p id="items"> </p>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <button onclick="pay()">pay</button>
+
+    </div>
+
+</body>
+
+</html>
