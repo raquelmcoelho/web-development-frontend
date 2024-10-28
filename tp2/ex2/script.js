@@ -20,7 +20,7 @@ let prices = [
 window.onload = function () {
     updateLabels()
     populateTable()
-    document.getElementById("cartButton").addEventListener("click", see_cart);
+    document.getElementById("cartButton").addEventListener("click", viewCart);
     document.getElementById("payButton").addEventListener("click", pay);
     for (let i = 0; i < products.length; i++) {
         document.getElementById(`${products[i]}Button`).addEventListener("click", () => choose(i));
@@ -84,7 +84,7 @@ function pay() {
         return
     }
 
-    if (confirm(content_cart() + ` Is that all ?`)) {
+    if (confirm(contentCart() + ` Is that all ?`)) {
         total = 0
         cart = {}
         updateLabels()
@@ -96,20 +96,20 @@ function updateLabels() {
     document.getElementById("total").innerHTML = `${total.toFixed(2)} €`
 }
 
-function see_cart() {
+function viewCart() {
     if (isEmpty(cart)) {
         alert("your cart is empty!")
         return
     }
 
-    alert(content_cart())
+    alert(contentCart())
 }
 
 function isEmpty(obj) {
     return Object.keys(obj).length == 0
 }
 
-function content_cart() {
+function contentCart() {
     let content = "Cart Content\n"
 
     Object.entries(cart).forEach(([product, quantity]) => {
