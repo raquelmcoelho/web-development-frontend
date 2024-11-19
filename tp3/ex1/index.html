@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Diaporama</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/JavaScript"></script>
+
+    <script>
+        $(document).ready(
+            function () {
+                $("#suivant").click(suivant);
+                $("#premier").click(premier);
+                $("#dernier").click(dernier);
+                $("#updateCard").click(updateCard);
+            }
+        );
+
+
+        element.click(function () {
+
+        });
+
+        // méthodes: val(), prop("disabled", true), prop("disabled", false), attr("src", ...), fadeIn(...), fadeOut(...).
+
+        let currentCard = 1;
+        const firstCard = 1;
+        const lastCard = 52;
+
+        function precedent() {
+            currentCard = Math.max(firstCard, currentCard - 1);
+            updateCard()
+        }
+
+        function suivant() {
+            currentCard = Math.min(lastCard, currentCard + 1);
+            updateCard()
+        }
+
+        function premier() {
+            currentCard = firstCard
+            updateCard()
+        }
+
+        function dernier() {
+            currentCard = lastCard
+            updateCard()
+        }
+
+        function updateCard() {
+            fadeIn($("#diaporama"))
+            $("#diaporama").attr("src", currentCard + ".png")
+            fadeOut($("#diaporama"))
+            $("#current:text").val(currentCard)
+            $("#total:text").val(lastCard)
+            $("#total")
+            $("#precedent").prop("disabled", (currentCard == firstCard))
+            $("#suivant").prop("disabled", (currentCard == lastCard))
+        }
+    </script>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <h2><b>Diaporama</b></h2>
+        </tr>
+        <tr>
+            <img id="diaporama" src="assets/jeuxDeCartes/1.png" alt="carte">
+        </tr>
+        <tr>
+            <td> <button id="precedent">Précédent</button> </td>
+            <td> <button id="suivant">Suivant</button> </td>
+            <td> <button id="premier">Premier</button> </td>
+            <td> <button id="dernier">Dernier</button> </td>
+        </tr>
+        <tr>
+            <p id="current"></p>
+            <h6>de</h6>
+            <p id="total"></p>
+        </tr>
+    </table>
+
+
+
+</body>
+
+</html>

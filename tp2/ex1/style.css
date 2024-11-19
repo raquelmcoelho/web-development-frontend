@@ -1,0 +1,60 @@
+ img {
+     height: 100px;
+     width: auto;
+     border-radius: 20%;
+ }
+
+ img:hover {
+     transform: scale(1.1);
+     transition: transform 0.5s;
+     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+ }
+
+ table {
+     width: 50%;
+     margin: auto;
+     /* border: 1px solid black; */
+ }
+
+ p,
+ h1,
+ button,
+ a {
+     text-align: center;
+     margin: auto;
+ }
+
+ td,
+ tr {
+     padding: 10px;
+     text-align: center;
+     /* border: 1px solid black; */
+ }
+
+ body {
+     background-image: url('assets/background.jpg');
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+ }
+
+ div {
+     background-color: aliceblue;
+     margin: 20px auto;
+     padding: 20px;
+     background-color: rgb(252, 217, 239);
+     border-radius: 8px;
+     width: fit-content;
+     block-size: fit-content;
+
+ }
+
+ button {
+     width: auto;
+     height: 20px;
+     margin: auto;
+     position: relative;
+     top: 50%;
+     left: 50%;
+
+ }

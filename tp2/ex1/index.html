@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Marché</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" type="text/JavaScript"></script>
+</head>
+
+<body>
+
+
+    <div>
+        <h1>Le marché, version 1</h1>
+
+        <table>
+            <tr>
+                <td> <a href="#" onclick="choisir('apple')">
+                        <img src="assets/apple.jpg" alt="apple">
+                    </a>
+                </td>
+                <td> <a href="#" onclick="choisir('carrot')">
+                        <img src="assets/carrot.jpg" alt="carrot">
+                    </a>
+                </td>
+                <td> <a href="#" onclick="choisir('strawberry')">
+                        <img src="assets/strawberry.jpeg" alt="strawberry">
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td id="appleprix"> 1 € </td>
+                <td id="carrotprix"> 5 € </td>
+                <td id="strawberryprix"> 3 € </td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td>total:</td>
+                <td>
+                    <p id="total"> </p>
+                </td>
+                <td>panier:</td>
+                <td>
+                    <p id="panier"> </p>
+                </td>
+            </tr>
+        </table>
+
+        <button onclick="payer()">payer</button>
+
+    </div>
+
+</body>
+
+</html>
