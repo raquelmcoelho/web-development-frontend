@@ -1,52 +1,131 @@
-var total = 0;
-var panier = 0;
+let total = 0.0
+let cart = {}
 
+let products = [
+    "apple",
+    "carrot",
+    "strawberry",
+    "blueberry",
+    "pineapple"
+]
 
-function choisir(price) {
-    total += price
-    panier += 1
-    updateLabels()
-}
-
-function prix(produit) {
-    return parseInt(document.getElementById(produit + "prix").innerHTML)
-}
-
-function payer() {
-    if (total == 0) {
-        alert("Votre panier est vide!")
-        return
-    }
-
-    if (confirm(`Vous devez ${total} euros ! Ce sera tout ?)`)) {
-        total = 0
-        panier = 0
-        updateLabels()
-    }
-}
-
-function updateLabels() {
-    document.getElementById("total").innerHTML = total
-    document.getElementById("panier").innerHTML = panier
-}
+let prices = [
+    1,
+    5,
+    3,
+    1.5,
+    2
+]
 
 window.onload = function () {
     updateLabels()
+    populateTable()
+    document.getElementById("cartButton").addEventListener("click", viewCart);
+    document.getElementById("payButton").addEventListener("click", pay);
+    for (let i = 0; i < products.length; i++) {
+        document.getElementById(`${products[i]}Button`).addEventListener("click", () => choose(i));
+    }
+}
+
+function populateTable() {
+    let rows = `<tr class="colorfulTable">`
+
+    for (let i = 0; i < products.length; i++) {
+        rows += `<td class="colorfulTable"> `
+        rows += `<a id="${products[i]}Button" href="#">`
+        rows += `<img src="assets/${products[i]}.jpg" alt="${products[i]}">`
+        rows += `</a>`
+        rows += `</td>`
+    }
+
+    rows += `</tr>`
+    rows += `<tr class="colorfulTable">`
+
+    for (let j = 0; j < prices.length; j++) {
+        rows += `<td class="colorfulTable"> ${prices[j]} €/Kg </td>`
+    }
+
+    rows += `</tr>`
+    document.getElementById('optionsTable').innerHTML = rows;
+}
+
+function choose(productIndex) {
+    addToCart(productIndex, demandQuantity())
+}
+
+function demandQuantity() {
+    let quantity = 0
+    let input = prompt("How many kgs do you want to add into the cart ?", "0")
+    input = parseFloat(input.replace(',', '.'))
+
+    if (typeof (input) == "number" && !isNaN(input)) {
+        quantity = input
+    }
+
+    return quantity
+}
+
+function addToCart(productIndex, quantity) {
+    let product = products[productIndex]
+    if (product in cart) {
+        cart[product] += quantity;
+    } else {
+        cart[product] = quantity;
+    }
+
+    total += calculatePrice(product, quantity)
+    updateLabels()
 }
 
 
-function askAmount(prix) {
-    const alertBox = document.createElement("div")
-    alertBox.className = "quantity-alert"
-    alertBox.innerHTML =
-        `
-    <h2>Quantité</h2>
-    <p>Combien de kg voulez-vous ajouter à votre panier ?</p>
-    <input type="number" id="quantity" value="1">
-    <button onclick="addQuantity()">OK</button>
-    `;
+function pay() {
+    if (isEmpty(cart)) {
+        alert("your cart is empty!")
+        return
+    }
 
-    let amount = alertBox.getElementById("quantity").value
+    if (confirm(contentCart() + ` Is that all ?`)) {
+        total = 0
+        cart = {}
+        updateLabels()
+    }
 
-    choisir(prix * amount)
 }
+
+function updateLabels() {
+    document.getElementById("total").innerHTML = `${total.toFixed(2)} €`
+}
+
+function viewCart() {
+    if (isEmpty(cart)) {
+        alert("your cart is empty!")
+        return
+    }
+
+    alert(contentCart())
+}
+
+function isEmpty(obj) {
+    return Object.keys(obj).length == 0
+}
+
+function contentCart() {
+    let content = "Cart Content\n"
+
+    Object.entries(cart).forEach(([product, quantity]) => {
+        content += `${product} (${quantity} Kg) : `
+        content += calculatePrice(product, quantity)
+        content += " €\n"
+    });
+
+    content += `Total = ${total} €`
+
+    return content
+}
+
+
+function calculatePrice(product, quantity) {
+    return prices[products.indexOf(product)] * quantity
+}
+
+

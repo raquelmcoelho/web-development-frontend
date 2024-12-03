@@ -2,55 +2,38 @@
 <html lang="en">
 
 <head>
-    <title>Marché</title>
+    <title>SuperMarket</title>
+    <link rel="icon" type="image/ico" href="assets/supermarket.ico">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa">
     <script src="script.js" type="text/JavaScript"></script>
 </head>
 
 <body>
-
-
     <div>
-        <h1>Le marché, version 1</h1>
-
-        <table>
-            <tr>
-                <td> <a href="#" onclick="choisir('apple')">
-                        <img src="assets/apple.jpg" alt="apple">
-                    </a>
-                </td>
-                <td> <a href="#" onclick="choisir('carrot')">
-                        <img src="assets/carrot.jpg" alt="carrot">
-                    </a>
-                </td>
-                <td> <a href="#" onclick="choisir('strawberry')">
-                        <img src="assets/strawberry.jpeg" alt="strawberry">
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td id="appleprix"> 1 € </td>
-                <td id="carrotprix"> 5 € </td>
-                <td id="strawberryprix"> 3 € </td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td>total:</td>
-                <td>
+        <h1>supermarket</h1>
+        <br>
+        <table id="optionsTable" class="colorfulTable"></table>
+        <br>
+        <table class="colorfulTable">
+            <tr class="colorfulTable">
+                <td class="colorfulTable">total:</td>
+                <td class="colorfulTable">
                     <p id="total"> </p>
-                </td>
-                <td>panier:</td>
+                    </td">
+            </tr>
+        </table>
+        <table>
+            <tr>
                 <td>
-                    <p id="panier"> </p>
+                    <button id="cartButton">cart</button>
+                </td>
+                <td>
+                    <button id="payButton">pay</button>
                 </td>
             </tr>
         </table>
-
-        <button onclick="payer()">payer</button>
-
     </div>
-
 </body>
 
 </html>

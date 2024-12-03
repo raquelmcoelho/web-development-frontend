@@ -1,33 +1,34 @@
-var total = 0;
-var panier = 0;
+var total = 0.0
+var items = 0
 
 
-function choisir(produit) {
-    total += prix(produit)
-    panier += 1
+function choose(product) {
+    total += price(product)
+    items += 1
     updateLabels()
 }
 
-function prix(produit) {
-    return parseInt(document.getElementById(produit + "prix").innerHTML)
+function price(product) {
+    console.log(`result ${document.getElementById(product + "price").innerHTML}`)
+    return parseFloat(document.getElementById(product + "price").innerHTML)
 }
 
-function payer() {
+function pay() {
     if (total == 0) {
-        alert("Votre panier est vide!")
+        alert("your cart is empty!")
         return
     }
 
-    if (confirm(`Vous devez ${total} euros ! Ce sera tout ?)`)) {
+    if (confirm(`you owe ${total} € ! Is that all ?`)) {
         total = 0
-        panier = 0
+        items = 0
         updateLabels()
     }
 }
 
 function updateLabels() {
-    document.getElementById("total").innerHTML = total
-    document.getElementById("panier").innerHTML = panier
+    document.getElementById("total").innerHTML = `${total} €`
+    document.getElementById("items").innerHTML = items
 }
 
 window.onload = function () {
